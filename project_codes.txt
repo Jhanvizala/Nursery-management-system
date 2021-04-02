@@ -1,0 +1,195 @@
+#include<iostream>
+#include<fstream>
+#include<cstring>
+//#include<string>
+using namespace std;
+class t
+{
+	string pname,ptype,pavail,custname,custadd,pseason,pneed;
+	int plife,custid,pid,custno;
+	public:
+		void set(string a, string b, string c, string d, string e, string f, int g, string h, int i, int j, int k)
+		{
+			pname=a;
+			ptype=b;
+			pavail=c;
+			custname=d;
+			custadd=e;
+			pseason=f;
+			plife=g;
+			pneed=h;
+			custid=i;
+			pid=j;
+			custno=k;
+		}
+		string name()
+		{
+			return pname;
+		}
+		string type()
+		{
+			return ptype;
+		}
+		string avail()
+		{
+			return pavail;
+		}
+		string cname()
+		{
+			return custname;
+		}
+		string cadd()
+		{
+			return custadd;
+		}
+		string season()
+		{
+			return pseason;
+		}
+		int life()
+		{
+			return plife;
+		}
+		string need()
+		{
+			return pneed;
+		}
+		int cid()
+		{
+			return custid;
+		}
+		int id()
+		{
+			return pid;
+		}
+		int cno()
+		{
+			return custno;
+		}
+		void disp()
+		{
+			cout<<endl<<pid<<"\t"<<pname<<"\t"<<ptype<<"\t"<<pavail<<"\t"<<plife<<"\t"<<pseason<<"\t"<<pneed<<"\t"<<custid<<"\t"<<custname<<"\t"<<custno<<"\t"<<custadd<<endl;
+
+
+		}
+};
+int main()
+{
+	t ob[10];
+	string z,y,x,w,v,u,s,temp1,temp2,temp3,temp4,temp5,temp6;
+	int t,r,q,p,m,temp7,temp8,temp9,temp10,temp11,i,c2=0;
+
+
+s:	cout<<"\nEnter 1 to add new records";
+	cout<<"\nEnter 2 to display records";
+	cout<<"\nEnter 3 to display all details of plant if the type is bonsai";
+	cout<<"\nEnter 4 to search customer details if plant name is hibiscus/dahlia";
+	cout<<"\nEnter 5 to display name of customers who bought shrubs of winter season";
+	cout<<"\nEnter 6 to display name of all customers along with their number who bought climber of rainy season";
+	cout<<"\nEnter 7 to exit.";
+	cout<<"\n\nEnter choice : ";
+	cin>>m;
+
+	if(m==1)
+	{ 
+		cout<<"\nEnter plant id : ";
+		cin>>q;
+		cout<<"\nEnter plant name : ";
+		cin>>z;
+		cout<<"\nEnter plant type(Bonsai/Herb/Shrub/Climber) : ";
+		cin>>y;
+		cout<<"\nEnter plant availablity (Yes/No) : ";
+		cin>>x;
+		cout<<"\nEnter plant life in days : ";
+		cin>>t;
+		cout<<"\nEnter plant season (Summer/Winter/Rainy/Autumn) : ";
+		cin>>u;
+		cout<<"\nEnter plant need for water (Once/Twice) : ";
+		cin>>s;
+		cout<<"\nEnter Customer Id : ";
+		cin>>r;
+		cout<<"\nEnter Customer Name : ";
+		cin>>w;
+		cout<<"\nEnter Customer's contact number : ";
+		cin>>p;
+		cout<<"\nEnter Customer Address : ";
+		cin>>v;
+
+		ob[c2].set(z,y,x,w,v,u,t,s,r,q,p);
+		c2++;
+			
+		goto s;
+	}
+	else if(m==2)
+	{ 
+	//ofstream obj("project.cpp",ios::out|ios::binary|ios::trunc);
+cout<<endl<<"p_id"<<"\t"<<"p_name"<<"\t"<<"p_type"<<"\t"<<"p_availability"<<"\t"<<"p_life"<<"\t"<<"p_season"<<"\t"<<"p_need_of _water"<<"\t"<<"cust_id"<<"\t"<<"cust_name"<<"\t"<<"cust_no"<<"\t"<<"cust_add"<<endl;
+
+
+		for(i=0;i<c2;i++)
+		{
+			ob[i].disp();
+		}
+		goto s;
+	}
+	else if(m==3)
+	{
+		for(i=0;i<c2;i++)
+		{
+			if(ob[i].type() == "bonsai"||ob[i].type() == "Bonsai"||ob[i].type() == "BONSAI")
+			//if(temp==temp1)
+			{	
+				ob[i].disp();
+			}
+		}
+		goto s;
+	}
+	else if(m==4)
+	{
+	for(i=0;i<c2;i++)
+{
+ if(ob[i].name() == "hibiscus"||ob[i].name() == "Hibiscus"||ob[i].name() == "HIBISCUS" || ob[i].name() == "dahlia"||ob[i].name() == "Dahlia"||ob[i].name() == "DAHLIA" )
+			//if(temp==temp1)
+			{	
+				cout<<ob[i].cadd()<<"\t"<<ob[i].cno()<<endl;
+			}
+}
+		goto s;
+	}
+	else if(m==5)
+	{
+	
+	for(i=0;i<c2;i++)
+	{	//temp2=ob[i].nam();
+if((ob[i].type()=="shrub"||ob[i].type()=="shrub"||ob[i].type()=="SHRUB")&&(ob[i].season()=="winter"||ob[i].season()=="Winter"||ob[i].season()=="WINTER"))
+			{
+				cout<<ob[i].cname()<<endl;
+			}
+		}
+goto s;
+	}
+	else if(m==6)
+	{
+	
+		for(i=0;i<c2;i++)
+		{	//temp2=ob[i].nam();
+if((ob[i].type()=="climber"||ob[i].type()=="Climber"||ob[i].type()=="CLIMBER")&&(ob[i].season()=="rainy"||ob[i].season()=="Rainy"||ob[i].season()=="RAINY"))
+			{
+				cout<<ob[i].cname()<<"\t"<<ob[i].cno()<<endl;
+			}
+
+		}
+goto s;
+	}
+	else if(m==7)
+	{
+		return 0;
+	}
+	
+	
+else
+	{
+		goto s;
+	}
+return 0;
+}
